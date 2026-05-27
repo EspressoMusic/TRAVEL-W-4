@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOYAGE — Curated Travel Experiences Worldwide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <svg class="svg-sprite" aria-hidden="true">
+    <defs>
+      <symbol id="icon-globe" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <ellipse cx="12" cy="12" rx="4" ry="10" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M2 12h20M12 2c3 3 4 7 4 10s-1 7-4 10M12 2c-3 3-4 7-4 10s1 7 4 10" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      </symbol>
+      <symbol id="icon-compass" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M12 4l1.5 7.5L12 12 10.5 11.5 12 4z" fill="currentColor"/>
+        <path d="M12 20l-1.5-7.5L12 12l1.5-.5L12 20z" fill="currentColor" opacity=".35"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="header" id="header">
+    <a href="#" class="logo">VOYAGE</a>
+    <nav class="nav">
+      <a href="#destinations">Destinations</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="theme-toggle-track">
+          <span class="theme-toggle-thumb"></span>
+        </span>
+        <span class="theme-toggle-label">Light</span>
+      </button>
+      <a href="#book" class="btn btn-header">Book</a>
+    </div>
+    <button class="menu-toggle" aria-label="Menu" type="button">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-graphics" aria-hidden="true">
+        <div class="float-shape float-shape--1"></div>
+        <div class="float-shape float-shape--2"></div>
+        <svg class="hero-svg hero-svg--globe" viewBox="0 0 120 120"><use href="#icon-globe"/></svg>
+        <svg class="hero-svg hero-svg--compass" viewBox="0 0 80 80"><use href="#icon-compass"/></svg>
+      </div>
+      <div class="hero-arch hero-arch--left" aria-hidden="true"></div>
+      <div class="hero-arch hero-arch--right" aria-hidden="true"></div>
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80" alt="" class="hero-img" />
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-label reveal">Bespoke journeys worldwide</p>
+        <h1 class="hero-title">
+          <span class="line"><span class="word">Journeys</span> <span class="word">That</span></span>
+          <span class="line"><span class="word">Redefine</span> <span class="word">How</span></span>
+          <span class="line"><span class="word">You</span> <span class="word">See</span> <span class="word">Earth</span></span>
+        </h1>
+        <p class="hero-sub reveal">Handcrafted itineraries, hidden locales, and moments you will never forget.</p>
+        <a href="#book" class="btn btn-hero reveal magnetic">Explore Journeys</a>
+      </div>
+      <div class="hero-scroll reveal">
+        <span>Scroll</span>
+        <div class="hero-scroll-line"></div>
+      </div>
+      <div class="hero-social reveal">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Pinterest">PT</a>
+        <a href="#" aria-label="Facebook">FB</a>
+      </div>
+    </section>
+
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <span>Santorini</span><span>·</span><span>Kyoto</span><span>·</span><span>Sahara</span><span>·</span>
+        <span>Patagonia</span><span>·</span><span>Bali</span><span>·</span><span>Amalfi</span><span>·</span>
+        <span>Iceland</span><span>·</span><span>Marrakech</span><span>·</span>
+        <span>Santorini</span><span>·</span><span>Kyoto</span><span>·</span><span>Sahara</span><span>·</span>
+        <span>Patagonia</span><span>·</span><span>Bali</span><span>·</span><span>Amalfi</span><span>·</span>
+        <span>Iceland</span><span>·</span><span>Marrakech</span><span>·</span>
+      </div>
+    </div>
+
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <span class="stat-num" data-count="48">0</span>
+          <span class="stat-label">Countries</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num" data-count="1200">0</span>
+          <span class="stat-suffix">+</span>
+          <span class="stat-label">Trips Crafted</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num" data-count="98">0</span>
+          <span class="stat-suffix">%</span>
+          <span class="stat-label">Guest Satisfaction</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num" data-count="24">0</span>
+          <span class="stat-suffix">/7</span>
+          <span class="stat-label">Concierge Support</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="section-deco section-deco--arch" aria-hidden="true"></div>
+      <div class="container">
+        <p class="section-label reveal">This Is What We Do</p>
+        <h2 class="section-title reveal">Our Services</h2>
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-arch">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Alpine peaks" />
+              <div class="service-shine"></div>
+            </div>
+            <span class="service-num">01</span>
+            <h3>Custom Itineraries</h3>
+            <p>Every journey built around your pace, budget, and dreams — from the Alps to the Aegean.</p>
+            <a href="#" class="link-more">Read More</a>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-arch">
+              <img src="assets/images/group-experiences.jpg" alt="Group exploring a scenic landscape" loading="lazy" width="600" height="800" />
+              <div class="service-shine"></div>
+            </div>
+            <span class="service-num">02</span>
+            <h3>Group Experiences</h3>
+            <p>Intimate groups, local culture, cooking workshops, and expert guides who know every secret corner.</p>
+            <a href="#" class="link-more">Read More</a>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-arch">
+              <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="Luxury resort" />
+              <div class="service-shine"></div>
+            </div>
+            <span class="service-num">03</span>
+            <h3>Luxury Stays</h3>
+            <p>Curated resorts, private villas, and hideaways only insiders know — without compromise.</p>
+            <a href="#" class="link-more">Read More</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured" id="about">
+      <div class="container featured-inner">
+        <div class="featured-text">
+          <p class="section-label reveal">Real Stories</p>
+          <h2 class="section-title reveal">Memories That<br />Last Forever</h2>
+          <p class="featured-desc reveal">
+            We do not simply book flights — we craft narratives. Journeys that blend adventure,
+            comfort, and quiet moments you will never find in an ordinary guidebook.
+          </p>
+          <a href="#destinations" class="btn btn-outline reveal magnetic">Let's Go</a>
+        </div>
+        <div class="featured-visual reveal">
+          <div class="featured-ring" aria-hidden="true"></div>
+          <div class="featured-circle">
+            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80" alt="Passport and map" />
+          </div>
+          <div class="featured-arch-deco" aria-hidden="true"></div>
+          <div class="featured-badge">
+            <svg viewBox="0 0 24 24" width="20" height="20"><use href="#icon-compass"/></svg>
+            <span>Since 2014</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="experiences" id="experiences">
+      <div class="container">
+        <p class="section-label reveal">Curated Moments</p>
+        <h2 class="section-title reveal">Signature Experiences</h2>
+      </div>
+      <div class="experiences-track-wrap">
+        <div class="experiences-track">
+          <article class="exp-card">
+            <div class="exp-card-media">
+              <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=500&q=80" alt="Northern lights" />
+            </div>
+            <div class="exp-card-content">
+              <h4>Aurora Retreats</h4>
+              <p>Norway & Iceland</p>
+            </div>
+          </article>
+          <article class="exp-card">
+            <div class="exp-card-media">
+              <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=500&q=80" alt="Temple" />
+            </div>
+            <div class="exp-card-content">
+              <h4>Temple Trails</h4>
+              <p>Cambodia & Laos</p>
+            </div>
+          </article>
+          <article class="exp-card">
+            <div class="exp-card-media">
+              <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=500&q=80" alt="Desert caravan" loading="lazy" />
+            </div>
+            <div class="exp-card-content">
+              <h4>Desert Caravans</h4>
+              <p>Morocco & Jordan</p>
+            </div>
+          </article>
+          <article class="exp-card">
+            <div class="exp-card-media">
+              <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=500&q=80" alt="Coast" />
+            </div>
+            <div class="exp-card-content">
+              <h4>Coastal Voyages</h4>
+              <p>Amalfi & Croatia</p>
+            </div>
+          </article>
+          <article class="exp-card">
+            <div class="exp-card-media">
+              <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=500&q=80" alt="Alpine lake" loading="lazy" />
+            </div>
+            <div class="exp-card-content">
+              <h4>Alpine Lakes</h4>
+              <p>Switzerland</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="destinations">
+      <div class="container">
+        <p class="section-label reveal">Trending Now</p>
+        <h2 class="section-title reveal">See What's Popular</h2>
+        <div class="gallery-grid">
+          <article class="gallery-item reveal">
+            <div class="gallery-img-wrap">
+              <img src="assets/images/bali.jpg" alt="Bali" loading="lazy" width="500" height="500" />
+              <div class="gallery-overlay"><span>Bali, Indonesia</span></div>
+            </div>
+            <div class="gallery-meta">
+              <button type="button" class="meta-btn" aria-label="Like">♥ <span>128</span></button>
+              <button type="button" class="meta-btn" aria-label="Comments">💬 <span>24</span></button>
+              <a href="#" class="meta-share">Share</a>
+            </div>
+          </article>
+          <article class="gallery-item reveal">
+            <div class="gallery-img-wrap">
+              <img src="assets/images/morocco.jpg" alt="Morocco" loading="lazy" width="500" height="500" />
+              <div class="gallery-overlay"><span>Sahara, Morocco</span></div>
+            </div>
+            <div class="gallery-meta">
+              <button type="button" class="meta-btn" aria-label="Like">♥ <span>256</span></button>
+              <button type="button" class="meta-btn" aria-label="Comments">💬 <span>41</span></button>
+              <a href="#" class="meta-share">Share</a>
+            </div>
+          </article>
+          <article class="gallery-item reveal">
+            <div class="gallery-img-wrap">
+              <img src="assets/images/kyoto.jpg" alt="Kyoto, Japan" loading="lazy" width="500" height="500" />
+              <div class="gallery-overlay"><span>Kyoto, Japan</span></div>
+            </div>
+            <div class="gallery-meta">
+              <button type="button" class="meta-btn" aria-label="Like">♥ <span>312</span></button>
+              <button type="button" class="meta-btn" aria-label="Comments">💬 <span>58</span></button>
+              <a href="#" class="meta-share">Share</a>
+            </div>
+          </article>
+          <article class="gallery-item reveal">
+            <div class="gallery-img-wrap">
+              <img src="assets/images/dubai.jpg" alt="Dubai" loading="lazy" width="500" height="500" />
+              <div class="gallery-overlay"><span>Dubai, UAE</span></div>
+            </div>
+            <div class="gallery-meta">
+              <button type="button" class="meta-btn" aria-label="Like">♥ <span>189</span></button>
+              <button type="button" class="meta-btn" aria-label="Comments">💬 <span>33</span></button>
+              <a href="#" class="meta-share">Share</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-arch" id="book">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="cta-arch-shape reveal">
+        <svg class="cta-arch-svg" viewBox="0 0 400 80" aria-hidden="true">
+          <path class="cta-path" d="M20,60 Q200,0 380,60" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>
+        <div class="cta-arch-inner">
+          <h2 class="cta-title reveal">Talk To Our Travel Curators</h2>
+          <p class="cta-sub reveal">Let's design your next journey together — no commitment required.</p>
+          <a href="#contact" class="btn btn-cta reveal magnetic">Let's Talk</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer-grid">
+      <div class="footer-brand reveal">
+        <a href="#" class="logo">VOYAGE</a>
+        <p>Curated travel experiences for every corner of the world — tailored precisely for you.</p>
+        <form class="newsletter" onsubmit="return false;">
+          <input type="email" placeholder="Your email" aria-label="Email" />
+          <button type="submit" class="btn btn-subscribe">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer-links reveal">
+        <div class="footer-col">
+          <h4>Links</h4>
+          <a href="#">Contact</a>
+          <a href="#">Policies</a>
+          <a href="#">FAQ</a>
+          <a href="#">About Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Regions</h4>
+          <a href="#">Asia</a>
+          <a href="#">Europe</a>
+          <a href="#">Africa</a>
+          <a href="#">Americas</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>hello@voyage.travel</p>
+          <p>+1 (555) 012-3456</p>
+          <p>New York, USA</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 VOYAGE. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Pinterest">PT</a>
+        <a href="#" aria-label="Facebook">FB</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
