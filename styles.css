@@ -725,6 +725,8 @@ body.has-pointer .cursor-glow {
   top: 0;
   pointer-events: none;
   will-change: transform, opacity;
+  z-index: 10;
+  box-shadow: 0 0 6px rgba(201, 169, 110, 0.45);
 }
 
 .stat-num {

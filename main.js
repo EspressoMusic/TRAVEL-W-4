@@ -317,26 +317,31 @@ function runStatCount(stat) {
   });
 }
 
-document.querySelectorAll(".stat").forEach((stat) => {
+function bindStatHover(stat) {
   const numEl = stat.querySelector(".stat-num");
-  if (!numEl) return;
+  if (!numEl || typeof gsap === "undefined") return;
 
   const target = parseInt(numEl.dataset.count, 10);
   let activeTween = null;
 
-  stat.addEventListener("mouseenter", () => {
+  const startCount = () => {
     if (activeTween) activeTween.kill();
     activeTween = runStatCount(stat);
-  });
+  };
 
-  stat.addEventListener("mouseleave", () => {
+  const endCount = () => {
     if (activeTween) {
       activeTween.kill();
       activeTween = null;
     }
     numEl.textContent = target;
-  });
-});
+  };
+
+  stat.addEventListener("pointerenter", startCount);
+  stat.addEventListener("pointerleave", endCount);
+}
+
+document.querySelectorAll(".stat").forEach(bindStatHover);
 
 /* Featured parallax + pin text */
 if (!prefersReducedMotion) {

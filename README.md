@@ -10,6 +10,12 @@ npx serve .
 
 Open `http://localhost:3000` (or the port shown).
 
+## Live site (GitHub Pages)
+
+https://espressomusic.github.io/TRAVEL-W-4/
+
+If you do not see the latest effects (stat count + confetti on hover), hard-refresh: **Ctrl+Shift+R** (Windows) or **Cmd+Shift+R** (Mac).
+
 ## Features
 
 - Dark mode toggle in the header
