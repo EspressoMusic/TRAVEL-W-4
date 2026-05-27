@@ -252,30 +252,89 @@ revealOnScroll(".cta-arch-shape", { y: 90, scale: 0.88, duration: 1.4 });
 revealOnScroll(".cta-arch-inner .reveal", { stagger: 0.08, y: 30 });
 revealOnScroll(".footer-brand, .footer-links", { y: 40 });
 
-/* Stat counters */
-document.querySelectorAll(".stat-num").forEach((el) => {
-  const target = parseInt(el.dataset.count, 10);
-  ScrollTrigger.create({
-    trigger: el,
-    start: "top 88%",
-    once: true,
-    onEnter: () => {
-      if (prefersReducedMotion) {
-        el.textContent = target;
-        return;
-      }
-      gsap.to(
-        { val: 0 },
-        {
-          val: target,
-          duration: 2,
-          ease: "power2.out",
-          onUpdate: function () {
-            el.textContent = Math.round(this.targets()[0].val);
-          },
-        }
-      );
+/* Stat hover: count up from 0 + confetti on complete */
+function burstConfetti(anchor) {
+  const host = anchor.querySelector(".stat-confetti");
+  if (!host) return;
+
+  const colors = ["#c9a96e", "#d4b87a", "#f5f0e8", "#9a8b7a", "#e8dfd0"];
+  const count = 22;
+
+  for (let i = 0; i < count; i++) {
+    const piece = document.createElement("span");
+    piece.className = "confetti-piece";
+    host.appendChild(piece);
+
+    const angle = (Math.PI * 2 * i) / count + Math.random() * 0.6;
+    const dist = 35 + Math.random() * 55;
+    const w = 3 + Math.random() * 5;
+    const h = 3 + Math.random() * 7;
+
+    gsap.set(piece, {
+      width: w,
+      height: h,
+      backgroundColor: colors[i % colors.length],
+      borderRadius: Math.random() > 0.45 ? "50%" : "1px",
+      rotation: Math.random() * 360,
+      x: 0,
+      y: 0,
+      opacity: 1,
+    });
+
+    gsap.to(piece, {
+      x: Math.cos(angle) * dist,
+      y: Math.sin(angle) * dist - 25,
+      rotation: "+=" + (120 + Math.random() * 240),
+      opacity: 0,
+      duration: 0.65 + Math.random() * 0.45,
+      ease: "power2.out",
+      onComplete: () => piece.remove(),
+    });
+  }
+}
+
+function runStatCount(stat) {
+  const numEl = stat.querySelector(".stat-num");
+  if (!numEl) return null;
+
+  const target = parseInt(numEl.dataset.count, 10);
+  const duration = target >= 500 ? 2.2 : target >= 100 ? 1.6 : 1.1;
+  const state = { val: 0 };
+
+  numEl.textContent = "0";
+
+  return gsap.to(state, {
+    val: target,
+    duration: prefersReducedMotion ? 0.01 : duration,
+    ease: "power2.out",
+    onUpdate: () => {
+      numEl.textContent = Math.round(state.val);
     },
+    onComplete: () => {
+      numEl.textContent = target;
+      if (!prefersReducedMotion) burstConfetti(stat);
+    },
+  });
+}
+
+document.querySelectorAll(".stat").forEach((stat) => {
+  const numEl = stat.querySelector(".stat-num");
+  if (!numEl) return;
+
+  const target = parseInt(numEl.dataset.count, 10);
+  let activeTween = null;
+
+  stat.addEventListener("mouseenter", () => {
+    if (activeTween) activeTween.kill();
+    activeTween = runStatCount(stat);
+  });
+
+  stat.addEventListener("mouseleave", () => {
+    if (activeTween) {
+      activeTween.kill();
+      activeTween = null;
+    }
+    numEl.textContent = target;
   });
 });
 

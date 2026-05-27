@@ -688,6 +688,45 @@ body.has-pointer .cursor-glow {
   text-align: center;
 }
 
+.stat {
+  position: relative;
+  padding: 1rem 0.5rem;
+  cursor: default;
+  border-radius: 12px;
+  transition: background 0.35s var(--ease-out);
+}
+
+.stat:hover {
+  background: rgba(201, 169, 110, 0.06);
+}
+
+.stat-value {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.stat-confetti {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.confetti-piece {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
 .stat-num {
   font-family: var(--display);
   font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -695,6 +734,12 @@ body.has-pointer .cursor-glow {
   color: var(--text-heading);
   font-variation-settings: "opsz" 72;
   line-height: 1;
+  transition: color 0.3s, transform 0.3s var(--ease-out);
+}
+
+.stat:hover .stat-num {
+  color: var(--accent);
+  transform: scale(1.04);
 }
 
 .stat-suffix {
